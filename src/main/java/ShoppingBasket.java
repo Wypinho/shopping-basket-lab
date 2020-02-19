@@ -1,12 +1,13 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ShoppingBasket {
     private ArrayList<Item> items;
+    private ArrayList<IDiscount> discounts;
     private double subTotal;
 
     public ShoppingBasket(){
         this.items = new ArrayList<Item>();
+        this.discounts = new ArrayList<IDiscount>();
         this.subTotal = 0;
     }
 
@@ -35,5 +36,21 @@ public class ShoppingBasket {
             this.subTotal += item.getPrice();
         }
 
+    }
+
+    public void addNewDiscount(IDiscount discount) {
+        this.discounts.add(discount);
+    }
+
+    public int getNumberOfDiscounts() {
+        return this.discounts.size();
+    }
+
+    public double calculateApplicableDiscounts() {
+        double totalDiscount = 0;
+        for (IDiscount discount : this.discounts){
+            totalDiscount += discount.calculateDiscount(this.items);
+        }
+        return totalDiscount;
     }
 }
