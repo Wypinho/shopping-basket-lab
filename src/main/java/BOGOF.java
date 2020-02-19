@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class BOGOF implements IDiscount {
     private ArrayList<Item> items;
@@ -20,8 +22,15 @@ public class BOGOF implements IDiscount {
     }
 
     private void findDuplicates() {
-        for (Integer quantity : this.itemCount.values());
-            if
+        Iterator it = this.itemCount.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            int value = pair.getValue();
+            if (pair.getValue() > 1) {
+                System.out.println(pair.getKey() + " = " + pair.getValue());
+            }
+            it.remove(); // avoids a ConcurrentModificationException
+        }
     }
 
     private void createHashMap() {
