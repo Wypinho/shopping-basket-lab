@@ -2,16 +2,18 @@ import java.util.HashMap;
 
 public class ShoppingBasket {
     private HashMap<String, Double> items;
-//    refactor to subtotal
-    private double total;
+    private double subTotal;
 
     public ShoppingBasket(){
         this.items = new HashMap();
-        this.total = 0;
+        this.subTotal = 0;
     }
-
 
     public int getNumberItems() {
         return this.items.size();
+    }
+
+    public double getSubTotal() {
+        return this.subTotal;
     }
 }

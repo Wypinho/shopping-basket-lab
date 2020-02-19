@@ -15,4 +15,9 @@ public class ShoppingBasketTest {
     public void startsEmpty(){
         assertEquals(0, shoppingBasket.getNumberItems());
     }
+
+    @Test
+    public void subTotalStartsAt0(){
+        assertEquals(0, shoppingBasket.getSubTotal(), 0.01);
+    }
 }
